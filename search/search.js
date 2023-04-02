@@ -1,12 +1,13 @@
+import searchpage from '../../e2e/search/search.page';
 const { Given, When, Then } = require('@badeball/cypress-cucumber-preprocessor');
 
 Given('I open the website',()=>{
     //TODO
-    cy.visit('http://zero.webappsecurity.com')
+    searchpage.visit()
 })
 
 When('I typing keyword in searchbox',()=>{
-    cy.get('#searchTerm').type('online banking{enter}')
+    searchpage.searchcontent('online banking{enter}')
 })
 
 Then('I found the keywords I was looking for' , () => {

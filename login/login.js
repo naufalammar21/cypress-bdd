@@ -1,16 +1,17 @@
+import loginpage from '../../e2e/login/login.page';
 const { Given, When, Then } = require('@badeball/cypress-cucumber-preprocessor');
 
 Given('I open login page',()=>{
     //TODO
-    cy.visit('http://zero.webappsecurity.com/login.html')
+    loginpage.visit();
 })
 
 When('I submit login',()=>{
-    cy.get('#user_login').type('username')
-    cy.get('#user_password').type('password')
-    cy.contains('Sign in').click()
+    loginpage.fillusername('username');
+    loginpage.fillpassword('password');
+    loginpage.signin();
 })
 
 Then('I should see homepage' , () => {
-    cy.get('#account_summary_tab' ).should('be.visible' )
+    cy.contains('Account Summary').should('be.visible' )
 })
